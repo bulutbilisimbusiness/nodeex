@@ -18,7 +18,7 @@ res.end("<h1>Main Page</h1>")
 }
 }).listen(8000,()=>console.log("server runned at http://127.0.0.1:8000")) */
 
-http.createServer((req,res)=>{
+/* http.createServer((req,res)=>{
     if(req.url=='/'){
         res.statusCode=404
         res.statusMessage='Not found'
@@ -38,7 +38,11 @@ http.createServer((req,res)=>{
                 'Content-Type':'application/json',
                 'another-header':'another-value',
             })
-            res.end('OK')
+            const obj={
+                result:true,
+                message:"İşlem Başarılı"
+            }
+            res.end(JSON.stringify(obj))
         } else {
             res.end('Not supporting different method')
         }
@@ -47,4 +51,17 @@ http.createServer((req,res)=>{
         res.end('Server is running!')
     }
     
-}).listen(8000,()=>console.log('http://127.0.0.1:8000'))
+}).listen(8000,()=>console.log('http://127.0.0.1:8000')) */
+require('dotenv').config()
+console.log(process.env.ENV_PORT)
+const port=process.env.ENV_PORT ?? 8000
+const app=http.createServer((request,response)=>{
+    response.end('<h1>welcome to node server</h1>')
+
+})
+app.listen(port,()=>console.log(`Server runned :http://127.0.0.1:${port}`))
+
+console.log("NODE_ENV : ",process.env.NODE_ENV);
+console.log("ENV_HOST : ",process.env.ENV_HOST + ':' + process.env.ENV_PORT);
+console.log("ENV_EXAMPLE_STR : ",process.env.ENV_EXAMPLE_STR)
+console.log("ENV_EXAMPLE_TXT : ",process.env.ENV_EXAMPLE_TXT)
