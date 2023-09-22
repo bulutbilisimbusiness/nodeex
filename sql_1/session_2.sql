@@ -190,3 +190,17 @@ SELECT BillingCountry,
 	ROUND(AVG(Total),2) AS ortalama
 FROM Invoice 
 GROUP BY BillingCountry;
+
+INSERT INTO Artist(ArtistId,Name)
+VALUES (276,'Erhan Bulut'); 
+
+INSERT INTO Artist(ArtistId,Name)
+VALUES (277,'Erhan Bulut'),
+		(278,'Meral Bulut'),
+		(279,'Ayşe Bulut'); 
+UPDATE Artist SET Name = 'Ali Bulut' WHERE ArtistId = 276;
+
+DELETE FROM Artist WHERE ArtistId=276;
+DELETE FROM Artist WHERE ArtistId IN (277, 278, 279);
+
+SELECT * from Artist  ORDER BY ArtistId DESC;
